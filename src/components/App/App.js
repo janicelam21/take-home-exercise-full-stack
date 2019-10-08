@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import TeamMember from '../TeamMember';
 import './App.css';
+import { throwStatement } from '@babel/types';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,6 +11,8 @@ class App extends React.Component {
       team: [],
       loading: true
     };
+    this.fetchInitialData = this.fetchInitialData.bind(this);
+    this.insertData = this.insertData.bind(this);
   }
 
   async componentDidMount() {
@@ -55,11 +58,14 @@ class App extends React.Component {
         {this.state.team.map(member => (
           <TeamMember
             key={member.id}
+            id={member.id}
             name={`${member.firstName} ${member.lastName}`}
             title={member.title}
             photoUrl={member.photoUrl}
             story={member.story}
             favoriteColor={member.favoriteColor}
+            editData = {this.editData}
+            deleteData = {this.deleteData}
           />
         ))}
         {/* Make this new team member link to your form! */}
