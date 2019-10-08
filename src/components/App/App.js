@@ -32,6 +32,18 @@ class App extends React.Component {
     });
   }
 
+  async insertData(data) {
+    await axios.post('/team', {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      title: data.title,
+      story: data.story,
+      favoriteColor: data.favColor,
+      photoUrl: data.photoURL
+    })
+    await this.fetchInitialData();
+  }
+
   render() {
     if (this.state.loading) {
       return <h1>Loading...</h1>;
@@ -51,7 +63,7 @@ class App extends React.Component {
           />
         ))}
         {/* Make this new team member link to your form! */}
-        <TeamMember id="new" name="Join us!" title="New Teammate" />
+        <TeamMember id="new" name="Join us!" title="New Teammate" insertData = {this.insertData}/>
       </div>
     );
   }

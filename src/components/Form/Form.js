@@ -32,6 +32,8 @@ class Form extends React.Component {
         favColor: this.state.favColor,
         photoURL: this.state.photoURL
       };
+      this.props.insertData(obj);
+      this.props.displayForm();
     } else {
       var message = ''
       if (!this.state.firstName) {

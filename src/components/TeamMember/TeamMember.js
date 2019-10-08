@@ -48,7 +48,7 @@ class TeamMember extends React.PureComponent {
           ? <button className = "addTeamButton" onClick = {this.displayForm}>Join the Team!</button>
           : null}
           {this.state.displayForm 
-          ? <Form />
+          ? <Form insertData = {this.props.insertData} displayForm = {this.displayForm}/>
           : null}
         </header>
         <div className="body">{this.props.story}</div>
