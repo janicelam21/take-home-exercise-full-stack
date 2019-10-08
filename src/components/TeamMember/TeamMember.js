@@ -2,8 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './TeamMember.css';
 import MatterEmptyAvatar from '../../assets/matter_empty_avatar.svg';
+import Form from '../Form/Form.js';
 
 class TeamMember extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      displayForm: false,
+    }
+    this.displayForm = this.displayForm.bind(this);
+  }
+
   static propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -17,6 +26,10 @@ class TeamMember extends React.PureComponent {
     story: null,
     favoriteColor: '#3466F2'
   };
+
+  displayForm() {
+    this.setState({displayForm: !this.state.displayForm});
+  }
 
   render() {
     return (
@@ -33,6 +46,9 @@ class TeamMember extends React.PureComponent {
           <h1 className="name">{this.props.name}</h1>
           {this.props.title === "New Teammate"
           ? <button className = "addTeamButton" onClick = {this.displayForm}>Join the Team!</button>
+          : null}
+          {this.state.displayForm 
+          ? <Form />
           : null}
         </header>
         <div className="body">{this.props.story}</div>

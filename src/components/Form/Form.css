@@ -1,0 +1,50 @@
+.form {
+  flex-direction: column;
+  width: 350px;
+}
+
+.eachform {
+  display: inline-block;
+}
+
+.label {
+  display: inline-block;
+  width: 115px;
+  text-align: right;
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+input, textarea {
+  font-family: inherit;
+  width: 225px;
+  border: none;
+  border: 1px solid #4287f5;
+  margin: 2px 0 2px 0;
+  padding: 0.15rem;
+  border-radius: 2px;
+  outline: none;
+}
+
+textarea {
+  height: 6rem;
+  resize: none;
+}
+
+.submitbtn {
+  width: 100px;
+  height: 20px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  border: 0;
+  padding: 0.2rem;
+  background: #4287f5;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+}
+
+.submitbtn:hover {
+  background: #6097f0
+}
