@@ -31,6 +31,9 @@ class TeamMember extends React.PureComponent {
           </div>
           <h2 className="title">{this.props.title}</h2>
           <h1 className="name">{this.props.name}</h1>
+          {this.props.title === "New Teammate"
+          ? <button className = "addTeamButton" onClick = {this.displayForm}>Join the Team!</button>
+          : null}
         </header>
         <div className="body">{this.props.story}</div>
         <footer style={{ backgroundColor: this.props.favoriteColor }}>
