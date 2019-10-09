@@ -105,7 +105,7 @@ footer .stat {
   color: white;
   cursor: pointer;
   outline: none;
-  border-radius: 5px
+  border-radius: 5px;
 }
 
 .addteambutton:hover {
@@ -127,7 +127,7 @@ footer .stat {
 }
 
 .editbutton:hover, .deletebutton:hover {
-  background: #6097f0
+  background: #6097f0;
 }
 
 .editbutton {
