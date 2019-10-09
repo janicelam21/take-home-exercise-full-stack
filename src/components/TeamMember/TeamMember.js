@@ -48,8 +48,12 @@ class TeamMember extends React.PureComponent {
     return (
       <div className="container">
         <header>
-          <button className = "editbutton" onClick = {this.editEntry}>Edit</button>
-          <button className = "deletebutton" onClick = {this.deleteEntry}>Delete</button>
+          {this.props.title !== "New Teammate"
+          ? <div>
+            <button className = "editbutton" onClick = {this.editEntry}>Edit</button>
+            <button className = "deletebutton" onClick = {this.deleteEntry}>Delete</button>
+          </div>
+          : null}
           <div className="avatar-container">
             <img
               className="avatar"

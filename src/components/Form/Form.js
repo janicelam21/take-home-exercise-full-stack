@@ -21,7 +21,7 @@ class Form extends React.Component {
   }
 
   onSubmit(e) {
-    // firstName, lastName, title, and story is required so alert user if any of those fields are empty
+    // firstName, lastName, title, and story are required so alert user if any of those fields are empty
     e.preventDefault();
     if (this.state.firstName && this.state.lastName && this.state.title && this.state.story) {
       var obj = {
