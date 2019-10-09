@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.get('/team', async (req, res, next) => {
   const team = await TeamMember.findAll();
-  return res.json(team);
+  return res.status(200).json(team);
 });
 
 app.post('/team', (req, res) => {
@@ -20,7 +20,7 @@ app.post('/team', (req, res) => {
     favoriteColor: req.body.favoriteColor,
     photoUrl: req.body.photoUrl
   })
-  .then(() => res.status(200).send('success'))
+  .then(() => res.status(201).send('success'))
   .catch((err) => res.status(400).send(err))
 });
 
@@ -37,7 +37,7 @@ app.delete('/team/:id', (req, res) => {
   TeamMember.destroy({
     where: {id: req.params.id}
   })
-  .then(() => res.status(200).send('deleted'))
+  .then(() => res.status(204).send('deleted'))
   .catch((err) => res.status(500).send(err))
 });
 
