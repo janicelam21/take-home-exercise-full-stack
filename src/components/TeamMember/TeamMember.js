@@ -16,6 +16,7 @@ class TeamMember extends React.PureComponent {
     this.deleteEntry = this.deleteEntry.bind(this);
     this.editEntry = this.editEntry.bind(this);
   }
+  
   static propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
