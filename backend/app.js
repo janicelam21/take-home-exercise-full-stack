@@ -12,7 +12,6 @@ app.get('/team', async (req, res, next) => {
 });
 
 app.post('/team', (req, res) => {
-  console.log('why')
   TeamMember.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -23,6 +22,23 @@ app.post('/team', (req, res) => {
   })
   .then(() => res.status(200).send('success'))
   .catch((err) => res.status(400).send(err))
+});
+
+app.put('/team/:id', (req, res) => {
+  TeamMember.update(
+    {[req.body.field]: req.body.message},
+    {where: {id: req.params.id}}
+  )
+  .then(() => res.status(200).send('success'))
+  .catch((err) => res.status(400).send(err))
+});
+
+app.delete('/team/:id', (req, res) => {
+  TeamMember.destroy({
+    where: {id: req.params.id}
+  })
+  .then(() => res.status(200).send('deleted'))
+  .catch((err) => res.status(500).send(err))
 });
 
 module.exports = app;
