@@ -12,6 +12,8 @@ class App extends React.Component {
     };
     this.fetchInitialData = this.fetchInitialData.bind(this);
     this.insertData = this.insertData.bind(this);
+    this.editData = this.editData.bind(this);
+    this.deleteData = this.deleteData.bind(this);
   }
 
   async componentDidMount() {
@@ -43,6 +45,19 @@ class App extends React.Component {
       favoriteColor: data.favColor,
       photoUrl: data.photoURL
     })
+    await this.fetchInitialData();
+  }
+
+  async editData(id, field, modMessage) {
+    await axios.put(`/team/${id}`, {
+      field: field,
+      message: modMessage
+    })
+    await this.fetchInitialData();
+  }
+
+  async deleteData(id) {
+    await axios.delete(`/team/${id}`);
     await this.fetchInitialData();
   }
 

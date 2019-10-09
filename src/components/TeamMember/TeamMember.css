@@ -92,3 +92,48 @@ footer .stat {
     margin-left: 24px;
   }
 }
+
+.addteambutton {
+  width: 200px;
+  height: 30px;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  font-size: 16px;
+  border: 0;
+  padding: 0.2rem;
+  background: #4287f5;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px
+}
+
+.addteambutton:hover {
+  background: #6097f0;
+}
+
+.editbutton, .deletebutton {
+  width: 100px;
+  height: 20px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  border: 0;
+  padding: 0.2rem;
+  background: #4287f5;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+}
+
+.editbutton:hover, .deletebutton:hover {
+  background: #6097f0
+}
+
+.editbutton {
+  float: left;
+}
+
+.deletebutton {
+  float: right;
+}

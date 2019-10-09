@@ -3,17 +3,21 @@ import PropTypes from 'prop-types';
 import './TeamMember.css';
 import MatterEmptyAvatar from '../../assets/matter_empty_avatar.svg';
 import Form from '../Form/Form.js';
+import EditForm from '../EditForm/EditForm.js';
 
 class TeamMember extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       displayForm: false,
+      displayEditForm: false
     }
     this.displayForm = this.displayForm.bind(this);
+    this.deleteEntry = this.deleteEntry.bind(this);
+    this.editEntry = this.editEntry.bind(this);
   }
-
   static propTypes = {
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     photoUrl: PropTypes.string,
@@ -31,10 +35,21 @@ class TeamMember extends React.PureComponent {
     this.setState({displayForm: !this.state.displayForm});
   }
 
+  deleteEntry() {
+    this.props.deleteData(this.props.id);
+  }
+
+  editEntry(field, modMessage) {
+    this.setState({displayEditForm: !this.state.displayEditForm});
+    this.props.editData(this.props.id, field, modMessage)
+  }
+
   render() {
     return (
       <div className="container">
         <header>
+          <button className = "editbutton" onClick = {this.editEntry}>Edit</button>
+          <button className = "deletebutton" onClick = {this.deleteEntry}>Delete</button>
           <div className="avatar-container">
             <img
               className="avatar"
@@ -42,10 +57,14 @@ class TeamMember extends React.PureComponent {
               alt={this.props.name}
             />
           </div>
+          {this.state.displayEditForm 
+          ? <EditForm editEntry = {this.editEntry}/>
+          : null}
           <h2 className="title">{this.props.title}</h2>
           <h1 className="name">{this.props.name}</h1>
+          
           {this.props.title === "New Teammate"
-          ? <button className = "addTeamButton" onClick = {this.displayForm}>Join the Team!</button>
+          ? <button className = "addteambutton" onClick = {this.displayForm}>Join the Team!</button>
           : null}
           {this.state.displayForm 
           ? <Form insertData = {this.props.insertData} displayForm = {this.displayForm}/>
